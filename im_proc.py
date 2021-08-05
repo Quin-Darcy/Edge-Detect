@@ -20,12 +20,15 @@ class Convolve:
         self.H = self.im.size[1]
 
     def Grey(self):
+        print('Greyscaling .....')
         grey.Grey(self.px, self.W, self.H, self.base_name)
 
     def Blur(self, ws=3, v=0):
         self.Grey()
+        print('Blurring ........')
         blur.Blur(self.px, self.W, self.H, ws, 'Grey/'+self.base_name, v)
 
-    def Edge(self):
-        self.Blur()
-        edge.Edge(self.px, self.W, self.H, 'Blur/'+self.base_name)
+    def Edge(self, ws=3):
+        self.Blur(5)
+        print('Finding edges ...')
+        edge.Edge(self.px, self.W, self.H, 'Blur/'+self.base_name, ws)

@@ -23,7 +23,7 @@ class Blur:
         else:
             var = self.var
 
-        norm_const = 2.4
+        norm_const = 2
 
         self.kernel = np.zeros((self.ws, self.ws))
         
