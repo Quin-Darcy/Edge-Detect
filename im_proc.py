@@ -22,9 +22,10 @@ class Convolve:
     def Grey(self):
         grey.Grey(self.px, self.W, self.H, self.base_name)
 
-    def Blur(self, ws, v=0):
+    def Blur(self, ws=3, v=0):
         self.Grey()
         blur.Blur(self.px, self.W, self.H, ws, 'Grey/'+self.base_name, v)
 
     def Edge(self):
-        edge.Edge(self.px, self.w, self.h, 'Blur/'+self.base_name)
+        self.Blur()
+        edge.Edge(self.px, self.W, self.H, 'Blur/'+self.base_name)
