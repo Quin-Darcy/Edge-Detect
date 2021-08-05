@@ -1,10 +1,9 @@
-import blur
+import im_proc
 from PIL import Image
 
 def main():
-    im = Image.open('monkey.jpg')
-    px = im.load()
-    blur.Blur(px, im.size[0], im.size[1], 3)
+    I = im_proc.Convolve('Images/monkey.jpg')
+    I.Blur(3)
 
 if __name__ == '__main__':
     main()
