@@ -20,6 +20,7 @@ class Grey:
     def grey(self):
         im = Image.new('RGB', (self.w, self.h), 0)
         px = im.load()
+        
         for i in range(self.h):
             for j in range(self.w):
                 px[j, i] = self.convert(list(self.px[j, i]))

@@ -1,5 +1,6 @@
-import blur
 import grey
+import enhance
+import blur
 import edge
 from PIL import Image
 
@@ -22,13 +23,26 @@ class Convolve:
     def Grey(self):
         print('Greyscaling .....')
         grey.Grey(self.px, self.W, self.H, self.base_name)
+        self.im = Image.open('Grey/'+self.base_name)
+        self.px = self.im.load()
 
-    def Blur(self, ws=3, v=0):
-        self.Grey()
+    def Enhance(self):
+        print('Enhancing .......')
+        enhance.Enhance(self.px, self.W, self.H, self.base_name)
+        self.im = Image.open('Enhance/'+self.base_name)
+        self.px = self.im.load()
+
+    def Blur(self, ws=3):
         print('Blurring ........')
-        blur.Blur(self.px, self.W, self.H, ws, 'Grey/'+self.base_name, v)
+        blur.Blur(self.px, self.W, self.H, self.base_name, ws)
+        self.im = Image.open('Blur/'+self.base_name)
+        self.px = self.im.load()
 
     def Edge(self, ws=3):
-        self.Blur(5)
+        self.Grey()
+        self.Blur(ws)
         print('Finding edges ...')
-        edge.Edge(self.px, self.W, self.H, 'Blur/'+self.base_name, ws)
+        edge.Edge(self.px, self.W, self.H, self.base_name)
+        self.im = Image.open('Edge/'+self.base_name)
+        self.px = self.im.load()
+        self.Enhance()
