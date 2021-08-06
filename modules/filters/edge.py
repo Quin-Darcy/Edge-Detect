@@ -44,4 +44,4 @@ class Edge:
                     p[i, j] = (255,255,255)
                 window[:] = 0 
 
-        im.save('Edge/'+self.name)
+        im.save('Images/Edge/'+self.name)

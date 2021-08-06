@@ -25,4 +25,4 @@ class Grey:
             for j in range(self.w):
                 px[j, i] = self.convert(list(self.px[j, i]))
 
-        im.save('Grey/'+self.name)
+        im.save('Images/Grey/'+self.name)
